@@ -4,8 +4,8 @@
 /?    310
 /+    urb-split    :: for single-page apps
 /%    /^  {hed/{@uvH marl} bod/{@uvH marl}}
-      /,      /web/app
-          /|(/;urb-split;/#/!hymn/ /urb-tree/)
+      /,      /web/static
+          /;  urb-split  /#  /!hymn/
               /
           /urb-tree/
       ==
