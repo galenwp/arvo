@@ -532,6 +532,10 @@ div.logo.inverse:before {
         color: #64DE79;
         line-height: 1.5rem; } }
 
+#tree > div > .container {
+  padding-top: 3rem;
+  padding-bottom: 6rem; }
+
 .lead h1:first-of-type {
   padding-bottom: 0; }
 
@@ -624,6 +628,9 @@ div.logo.inverse:before {
 
 .body .urbit .container.stack {
   margin-bottom: 3rem; }
+  .body .urbit .container.stack p {
+    font-size: 1.2rem;
+    line-height: 2rem; }
 
 .body .urbit .container.stack.six {
   margin-top: 12rem;
@@ -1143,16 +1150,13 @@ div.logo.inverse:before {
 .sections ul li a,
 .sections ul li h1 span {
   color: #55595c;
-  height: 2rem; }
+  margin-bottom: 1rem;
+  line-height: 1.5rem; }
 
 .sections .kids > div {
   display: inline-block;
   vertical-align: top;
-  margin-right: 3rem;
-  margin-top: 2rem;
-  min-width: 14rem;
   margin-bottom: 3rem;
-  padding: 0;
   float: none; }
 
 .sections .kids > div p {

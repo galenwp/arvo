@@ -15,7 +15,7 @@ anchor: none
   </div>
 </div>
 
-<div class="container stack stream">
+<!-- <div class="container stack stream">
   <div class="col-md-10">
     <div class="mini-module">
       <h6>Stream:</h6>
@@ -28,4 +28,4 @@ anchor: none
       <talk readonly="" chrono="reverse" station="public"></talk>
     </div>
   </div>
-</div>
+</div> -->
