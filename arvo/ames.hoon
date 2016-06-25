@@ -290,7 +290,7 @@
         0w0                           ::  145, ~leb, Justin LeBlanc
         0w0                           ::  146, ~dux, urbit.org
         0w0                           ::  147, ~ryn, urbit.org
-        0w0                           ::  148, ~num, Tlon
+        0w0                           ::  148, ~num, urbit.org
         0w0                           ::  149, ~pyx, Katherine McFall
         0w2g.gLmg4.MtrHQ.A5VmH.WPk6G  ::  150, ~ryg, Dan Haffey
         0w0                           ::  151, ~ryx, Tlon
