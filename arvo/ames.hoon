@@ -1,4 +1,4 @@
-!:  ::  ames (4a), networking  
+!:  ::  ames (4a), networking
 ::
   |=  pit/vase
   =>  =~
@@ -147,7 +147,7 @@
         0w0                           ::    2, ~bud, Tlon Investor 1
         0w0                           ::    3, ~wes, Tlon Investor 2
         0w0                           ::    4, ~sev, Tlon Investor 2
-        0wt.cKYxs.Yb5VZ.boSwm.l0yYc   ::    5, ~per, Tlon Investor 3 
+        0wt.cKYxs.Yb5VZ.boSwm.l0yYc   ::    5, ~per, Tlon Investor 3
         0w0                           ::    6, ~sut, Tlon Investor 4
         0w0                           ::    7, ~let, Tlon Investor 4
         0w0                           ::    8, ~ful, Tlon Investor 4
@@ -157,7 +157,7 @@
         0w0                           ::   12, ~wep, Sam Putman
         0w0                           ::   13, ~ser, Tlon Investor 5
         0w3j.H0sty.jHa3F.JlD26.4LPwV  ::   14, ~wyl, Zimran Ahmed
-        0w3F.QdvV-.toAsR.hvUNk.fHjW6  ::   15, ~sun, Colin Smith 
+        0w3F.QdvV-.toAsR.hvUNk.fHjW6  ::   15, ~sun, Colin Smith
         0w0                           ::   16, ~ryp, Tlon Investor 6
         0w0                           ::   17, ~syx, Tlon Investor 6
         0w0                           ::   18, ~dyr, Tlon Investor 6
@@ -187,7 +187,7 @@
         0w0                           ::   42, ~tul, Susan Yarvin
         0w0                           ::   43, ~met, Susan Yarvin
         0w0                           ::   44, ~wen, Susan Yarvin
-        0w0                           ::   45, ~byn, Susan Yarvin 
+        0w0                           ::   45, ~byn, Susan Yarvin
         0w0                           ::   46, ~hex, James Torre
         0w0                           ::   47, ~feb, Raymond Pasco
         0wK.GoKEY.rMjfn.ZcvFQ.n4BmX   ::   48, ~pyl, Michael Hartl
@@ -199,7 +199,7 @@
         0w0                           ::   54, ~wyd, Curtis Yarvin
         0w0                           ::   55, ~tep, Sibyl Kollmer
         0w0                           ::   56, ~bes, Sibyl Kollmer
-        0w0                           ::   57, ~dex, Jared Hance 
+        0w0                           ::   57, ~dex, Jared Hance
         0w0                           ::   58, ~sef, Owen Rescher
         0w0                           ::   59, ~wyc, Galen Wolfe-Pauly
         0w0                           ::   60, ~bur, Galen Wolfe-Pauly
@@ -279,7 +279,7 @@
         0w0                           ::  134, ~lyx, urbit.org
         0w0                           ::  135, ~pun, urbit.org
         0w0                           ::  136, ~res, urbit.org
-        0w0                           ::  137, ~red, urbit.org
+        0w0                           ::  137, ~red, Alex Kravets
         0w3J.15iJA.0pbNk.mZXyh.A~uKb  ::  138, ~fun, Aaron Beckerman
         0w0                           ::  139, ~rev, urbit.org
         0w3m.Cqumo.ZC7-e.794A4.Bqhh8  ::  140, ~ref, Matt Brubeck
@@ -1675,7 +1675,7 @@
         ?:  ?=($e ven)
           ?+  cak  !!                 ::  XX  fix eyre
             $pr  :_  [%sick %waft p.bon r.bon]
-                 [[`path`t.t.t.q.q.bon] hen] 
+                 [[`path`t.t.t.q.q.bon] hen]
             $pc  :_  [%sick %wart p.bon cak `path`t.t.t.q.q.bon r.bon]
                  [[%e `path`t.t.t.q.q.bon] hen]
           ==
@@ -1717,7 +1717,7 @@
       :_  fox  [hen %pass pax i.q.q.bon %west p.bon t.q.q.bon r.bon]~
     ::
         $ouzo
-      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))] 
+      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
       :_  fox
       [[gad.fox [%give %send p.bon q.bon]] ~]
     ::
@@ -1784,7 +1784,7 @@
     ?:  ?=($wegh -.kyz)
       ~&  %ames-weighing
       [[hen %give %mass wegh]~ +>]
-    =+  ^=  fuy  
+    =+  ^=  fuy
         ^-  {p/(list boon) q/fort}
         ?-    -.kyz
             $barn
