@@ -121,6 +121,16 @@
     abet:(spam (render "already syncing" [sud her syd]:hos) ~)
   abet:abet:(start-sync:(auto hos) |)
 ::
+++  poke-syncs                                        ::
+  |=  $~
+  =<  abet  %-  spam
+  =+  a=(~(tap by syn))
+  ?:  =(0 (lent a))
+    [%leaf "no syncs configured"]~
+  %-  flop  %+  turn  a
+  |=  a/(pair kiln-sync *)
+  (render "sync configured" [sud her syd]:p.a)
+::
 ++  poke-init-sync
   |=  hos/kiln-sync
   ?:  (~(has by syn) hos)
@@ -147,7 +157,14 @@
   |=  {mez/tape tor/toro}
   abet:(emit:(spam leaf+mez ~) %info /kiln our tor)
 ::
-++  poke-rm  |=(a/path (poke-info "removed" (fray a)))
+++  poke-rm
+  |=  a/path
+  =+  b=.^(arch %cy a)
+  ?~  fil.b
+    =+  ~[leaf+"No such file:" leaf+"{<a>}"]
+    abet:(spam -)
+  (poke-info "removed" (fray a))
+::
 ++  poke-label
   |=  {syd/desk lab/@tas}
   =+  pax=/(scot %p our)/[syd]/[lab]

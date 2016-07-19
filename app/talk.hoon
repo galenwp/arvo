@@ -122,6 +122,20 @@
         (runt [(sub len lez) '-'] nez)
       :(welp pre (scag (dec len) nez) "+")  
     ++  glyphs  `wall`~[">=+-" "}),." "\"'`^" "$%&@"]     :: station char pool
+    ++  peer-type                                       ::  stream requests
+      =<  apex
+      |%
+      ++  apex  ?($a-group $f-grams $v-glyph $x-cabal)  ::  options
+      ++  encode  |=(a/apex ^-(char (end 3 1 a)))       ::  by first char
+      ++  decode                                        ::  discriminate
+        |=  a/char  ^-  apex
+        ?+  a  ~|(bad-subscription-designator+a !!)
+          $a  %a-group
+          $f  %f-grams
+          $v  %v-glyph
+          $x  %x-cabal
+        ==
+      --
     --
 |_  {hid/bowl house}
 ++  ra                                                  ::  per transaction
@@ -313,7 +327,10 @@
       =<  sh-prod
       %_    .
           +>
-        (ra-subscribe:(ra-subscribe her.she ~) her.she [%afx man.she ~])
+        =/  typ
+          =+  (ly ~[%a-group %f-grams %x-cabal])
+          (rap 3 (turn - encode:peer-type))
+        (ra-subscribe:(ra-subscribe her.she ~) her.she [typ man.she ~])
       ==
     ::
     ++  sh-prod                                         ::  show prompt
@@ -808,27 +825,32 @@
       |=  buf/(list @c)
       ^-  (list sole-edit)
       ?~  buf  ~
-      =+  [inx=0 sap=0 con=0]
+      =+  [[pre=*@c cur=i.buf buf=t.buf] inx=0 brk=0 len=0 new=|]
+      =*  txt  -<
       |^  ^-  (list sole-edit)
-          ?:  =(i.buf (turf '•'))
-            ?.  =(0 con)  newline
-            [[%del inx] ?~(t.buf ~ $(buf t.buf))]
-          ?:  =(i.buf `@`' ')
-            ?.  =(64 con)  advance(sap inx)
-            [(fix (turf '•')) newline]
-          ?:  =(64 con)
-            =+  dif=(sub inx sap)
+          ?:  =(cur (turf '•'))
+            ?:  =(pre (turf '•'))
+              [[%del inx] ?~(buf ~ $(txt +.txt))]
+            ?:  new
+              [(fix ' ') $(cur `@c`' ')] 
+            newline
+          ?:  =(cur `@`' ')
+            =.  brk  ?:(=(pre `@`' ') brk inx)
+            ?.  =(64 len)  advance
+            [(fix(inx brk) (turf '•')) newline(new &)]
+          ?:  =(64 len)
+            =+  dif=(sub inx brk)
             ?:  (lth dif 64)
-              [(fix(inx sap) (turf '•')) $(con dif)]
-            [[%ins inx (turf '•')] $(con 0, inx +(inx))]
-          ?:  |((lth i.buf 32) (gth i.buf 126))
+              [(fix(inx brk) (turf '•')) $(len dif, new &)]
+            [[%ins inx (turf '•')] $(len 0, inx +(inx), new &)]
+          ?:  |((lth cur 32) (gth cur 126))
             [(fix '?') advance]
-          ?:  &((gte i.buf 'A') (lte i.buf 'Z'))
-            [(fix (add 32 i.buf)) advance]
+          ?:  &((gte cur 'A') (lte cur 'Z'))
+            [(fix (add 32 cur)) advance]
           advance
       ::
-      ++  advance  ?~(t.buf ~ $(con +(con), inx +(inx), buf t.buf))
-      ++  newline  ?~(t.buf ~ $(con 0, inx +(inx), buf t.buf))
+      ++  advance  ?~(buf ~ $(len +(len), inx +(inx), txt +.txt))
+      ++  newline  ?~(buf ~ $(len 0, inx +(inx), txt +.txt))
       ++  fix  |=(cha/@ [%mor [%del inx] [%ins inx `@c`cha] ~])  
       --
     ::
@@ -925,7 +947,7 @@
         sh-prod(active.she `tr-pals:tay)
       ::
       ++  help  
-        (sh-fact %txt "see http://urbit.org/docs/user/talk")
+        (sh-fact %txt "see http://urbit.org/docs/using/messaging/")
       ::
       ++  glyph
         |=  idx/@
@@ -1421,7 +1443,7 @@
       (ra-house(general (~(put in general) ost.hid)) ost.hid)
     ?.  ?=({@ @ *} pax)
       (ra-evil %talk-bad-path)
-    =+  vab=(~(gas in *(set @tas)) (rip 3 i.pax))
+    =+  vab=(~(gas in *(set peer-type)) (turn (rip 3 i.pax) decode:peer-type))
     =+  pur=(~(get by stories) i.t.pax)
     ?~  pur
       ~&  [%bad-subscribe-story-c i.t.pax]
@@ -1430,10 +1452,10 @@
     ?.  (pa-visible:soy her)
       (ra-evil %talk-no-story)
     =^  who  +>.$  (ra-human her)
-    =.  soy  ?.((~(has in vab) %a) soy (pa-watch-group:soy her))
-    =.  soy  ?.((~(has in vab) %v) soy (pa-watch-glyph:soy her))
-    =.  soy  ?.((~(has in vab) %x) soy (pa-watch-cabal:soy her))
-    =.  soy  ?.((~(has in vab) %f) soy (pa-watch-grams:soy her t.t.pax))
+    =.  soy  ?.((~(has in vab) %a-group) soy (pa-watch-group:soy her))
+    =.  soy  ?.((~(has in vab) %v-glyph) soy (pa-watch-glyph:soy her))
+    =.  soy  ?.((~(has in vab) %x-cabal) soy (pa-watch-cabal:soy her))
+    =.  soy  ?.((~(has in vab) %f-grams) soy (pa-watch-grams:soy her t.t.pax))
     =.  soy  (pa-notify:soy her %hear who)
     pa-abet:soy
   ::
@@ -1634,8 +1656,12 @@
       %+  turn  tal
       |=  tay/partner
       ^-  (list card)
-      :: =+  num=(fall (~(get by sequence) tay) 0) :: XX unused
-      =+  old=(sub now.hid ~d1)
+      =+  num=(~(get by sequence) tay)
+      =+  old=(sub now.hid ~d1)                         :: XX full backlog
+      =+  ini=?^(num (scot %ud u.num) (scot %da old))
+      =/  typ
+        =+  (ly ~[%a-group %f-grams %x-cabal])
+        (rap 3 (turn - encode:peer-type))
       ?-  -.tay
         $|  !!
         $&  ::  ~&  [%pa-acquire [our.hid man] [p.p.tay q.p.tay]]
@@ -1643,7 +1669,7 @@
             :*  %peer
                 /friend/show/[man]/(scot %p p.p.tay)/[q.p.tay]
                 [p.p.tay %talk] 
-                /afx/[q.p.tay]/(scot %da old)
+                /[typ]/[q.p.tay]/[ini]
             ==
       ==
     ::
