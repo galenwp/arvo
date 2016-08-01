@@ -1052,7 +1052,7 @@ module.exports = query({
     }, 'Error: Empty path'), div({}, pre({}, this.props.path), span({}, 'is either empty or does not exist.')));
   },
   sortedKids: function() {
-    var _k, _keys, k, ref1, ref2, ref3, ref4, sorted, v;
+    var _k, _kids, elem, k, meta, ref1, ref2, sorted;
     if (this.props.sortBy === 'bump') {
       return _.sortBy(this.props.kids, function(arg) {
         var bump, name;
@@ -1061,38 +1061,40 @@ module.exports = query({
       }).reverse();
     }
     sorted = true;
-    _keys = [];
+    _kids = [];
     ref1 = this.props.kids;
     for (k in ref1) {
-      v = ref1[k];
+      elem = ref1[k];
+      meta = (ref2 = elem.meta) != null ? ref2 : {};
       if (this.props.sortBy) {
         if (this.props.sortBy === 'date') {
-          if (((ref2 = v.meta) != null ? ref2.date : void 0) == null) {
-            return _.keys(this.props.kids).sort();
+          if (meta.date == null) {
+            return _.sortBy(this.props.kids, 'name');
           }
-          _k = Number(v.meta.date.slice(1).replace(/\./g, ""));
-          _keys[_k] = k;
+          _k = Number(meta.date.slice(1).replace(/\./g, ""));
+          _kids[_k] = elem;
         }
       } else {
-        if (((ref3 = v.meta) != null ? ref3.sort : void 0) == null) {
-          return _.keys(this.props.kids).sort();
+        if (meta.sort == null) {
+          return _.sortBy(this.props.kids, 'name');
         }
-        _keys[Number((ref4 = v.meta) != null ? ref4.sort : void 0)] = k;
+        _kids[Number(meta.sort)] = elem;
       }
     }
     if (this.props.sortBy === 'date') {
-      _keys.reverse();
+      _kids.reverse();
     }
-    return _.values(_keys);
+    return _.values(_kids);
   },
   renderList: function(elems) {
-    var _date, author, cont, date, elem, href, i, image, item, len, linked, node, parts, path, preview, ref1, results, title;
+    var _date, author, cont, date, elem, href, i, image, item, len, linked, meta, node, parts, path, preview, ref1, results, title;
     results = [];
     for (i = 0, len = elems.length; i < len; i++) {
       elem = elems[i];
       item = elem.name;
+      meta = (ref1 = elem.meta) != null ? ref1 : {};
       path = this.props.path + "/" + item;
-      if (elem.meta.hide != null) {
+      if (meta.hide != null) {
         continue;
       }
       href = util.basepath(path);
@@ -1102,12 +1104,12 @@ module.exports = query({
       if (this.props.childIsFragment != null) {
         href = (util.basepath(this.props.path)) + "#" + item;
       }
-      if (elem.meta.link) {
-        href = elem.meta.link;
+      if (meta.link) {
+        href = meta.link;
       }
       parts = [];
       title = null;
-      if ((ref1 = elem.meta) != null ? ref1.title : void 0) {
+      if (meta.title) {
         if (this.props.dataType === 'post') {
           title = {
             gn: 'a',
@@ -1120,7 +1122,7 @@ module.exports = query({
                 ga: {
                   className: 'title'
                 },
-                c: [elem.meta.title]
+                c: [meta.title]
               }
             ]
           };
@@ -1130,7 +1132,7 @@ module.exports = query({
             ga: {
               className: 'title'
             },
-            c: [elem.meta.title]
+            c: [meta.title]
           };
         }
       }
@@ -1147,7 +1149,7 @@ module.exports = query({
         };
       }
       if (!this.props.titlesOnly) {
-        _date = elem.meta.date;
+        _date = meta.date;
         if (!_date || _date.length === 0) {
           _date = "";
         }
@@ -1163,7 +1165,7 @@ module.exports = query({
       parts.push(title);
       if (!this.props.titlesOnly) {
         if (this.props.dataType === 'post') {
-          if (elem.meta.image) {
+          if (meta.image) {
             image = {
               gn: 'a',
               ga: {
@@ -1173,7 +1175,7 @@ module.exports = query({
                 {
                   gn: 'img',
                   ga: {
-                    src: elem.meta.image
+                    src: meta.image
                   }
                 }
               ]
@@ -1182,16 +1184,16 @@ module.exports = query({
           }
         }
         if (this.props.dataPreview) {
-          if (!elem.meta.preview) {
+          if (!meta.preview) {
             parts.push.apply(parts, elem.snip.c.slice(0, 2));
           } else {
-            if (elem.meta.preview) {
+            if (meta.preview) {
               preview = {
                 gn: 'p',
                 ga: {
                   className: 'preview'
                 },
-                c: [elem.meta.preview]
+                c: [meta.preview]
               };
             } else {
               preview = elem.snip;
@@ -1200,13 +1202,13 @@ module.exports = query({
           }
         }
         if (this.props.dataType === 'post') {
-          if (elem.meta.author) {
+          if (meta.author) {
             author = {
               gn: 'h3',
               ga: {
                 className: 'author'
               },
-              c: [elem.meta.author]
+              c: [meta.author]
             };
             parts.push(author);
           }
@@ -3343,12 +3345,8 @@ EventEmitter.prototype.emit = function(type) {
       er = arguments[1];
       if (er instanceof Error) {
         throw er; // Unhandled 'error' event
-      } else {
-        // At least give some kind of context to the user
-        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-        err.context = er;
-        throw err;
       }
+      throw TypeError('Uncaught, unspecified "error" event.');
     }
   }
 
