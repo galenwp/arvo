@@ -3170,11 +3170,13 @@ module.exports = {
     });
     switch (sortBy) {
       case 'bump':
-        return _.sortBy(kids, function(arg) {
-          var bump, name;
-          bump = arg.bump, name = arg.name;
-          return bump || name;
-        }).reverse();
+        return _.sortBy(kids, (function(_this) {
+          return function(arg) {
+            var bump, meta, name;
+            bump = arg.bump, meta = arg.meta, name = arg.name;
+            return _this.dateFromAtom(bump || (meta != null ? meta.date : void 0) || name);
+          };
+        })(this)).reverse();
       case 'date':
         _kids = [];
         for (k in kids) {
