@@ -32,7 +32,7 @@
         $womb  *part:womb                               ::
         $write  *part:write                             ::
       ==                                                ::
-    ++  hood-part-old  ?(hood-part)  :: drum-part-old   ::
+    ++  hood-part-old  ?(hood-part drum-part-old)       ::
     ++  hood-port                                       ::
       |=  paw/hood-part-old  ^-  hood-part              ::
       ?+  -.paw  paw                                    ::
@@ -40,7 +40,7 @@
       ==                                                ::
     ::                                                  ::
     ++  hood-part                                       ::
-      $%  {$drum $1 drum-pith-1}                        ::
+      $%  {$drum $2 drum-pith-2}                        ::
           {$helm $0 helm-pith}                          ::
           {$kiln $0 kiln-pith}                          ::
           {$womb $1 pith:womb}                          ::
@@ -95,6 +95,7 @@
 ::
 ++  coup-drum-phat  (wrap take-coup-phat):from-drum
 ++  coup-helm-hi    (wrap coup-hi):from-helm
+++  coup-helm-ask   (wrap coup-ask):from-helm
 ++  diff-sole-effect-drum-phat  (wrap diff-sole-effect-phat):from-drum
 ++  from-lib
   |*  _[%helm ..$ _abet]:(helm)
