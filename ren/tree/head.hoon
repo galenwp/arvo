@@ -15,13 +15,13 @@
       |=  gas/epic  ^-  {? ?}                           :: check if the query
       :-  (~(has by qix.gas) 'dbg.nopack')              :: dictates separate files
       (~(has by qix.gas) 'dbg.nomin')                   :: and/or unminified assets
-::
 |%
 ++  cdnjs
   |=(a/tape "//cdnjs.cloudflare.com/ajax/libs/{a}{?:(nomin.dbg "" ".min")}.js")
 ++  maxcdn
   |=(a/tape "//maxcdn.bootstrapcdn.com/{a}{?:(nomin.dbg "" ".min")}.js")
 --
+:: a
 !:
 ::::
   ::
@@ -55,7 +55,7 @@
 ::                                             "/===/web/pack/js/tree-hoon-urb.js");
         ;=
 ::           ;script(type "text/javascript", src "/===/web/lib/js/hoon.js");
-          ;script(type "text/javascript", src "/===/web/tree/main.js");
+          ;script(type "text/javascript", src "/===/web/tree/bundle.js");
           ;script(type "text/javascript", src "{?.(aut "" "/~~/~/at")}".
                                               "/===/web/lib/js/urb.js");
         ==
