@@ -739,7 +739,7 @@
         0w0                           ::   68, ~sub, Henry Yarvin
         0w0                           ::   69, ~pet, Henry Yarvin
         0w0                           ::   70, ~rul, Henry Yarvin
-        0w0                           ::   71, ~syn, Henry Ault
+        0w0                           ::   71, ~syn, Pantera Capital
         0w0                           ::   72, ~reg, Henry Ault
         0w0                           ::   73, ~tyd, Henry Ault
         0w0                           ::   74, ~sup, Henry Ault
